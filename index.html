@@ -7,17 +7,15 @@
 <body>
 
 <script>
-    var req = new XMLHttpRequest();
-    req.open('GET', 'localhost:8000', true);
-    req.onreadystatechange = function (aEvt) {
-        if (req.readyState == 4) {
-            if(req.status == 200)
-            dump(req.responseText);
-        else
-            dump("Error loading page\n");
-        }
-    };
-    req.send(null);
+    var formData = new FormData();
+
+    formData.append("username", "Mauri");
+    formData.append("accountnum", 123456);
+    formData.append("afile", fileInputElement.files[0]);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "localhost:8000");
+    xhr.send(formData);
 
 </script>
 
