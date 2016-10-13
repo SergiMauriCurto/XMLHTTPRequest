@@ -7,10 +7,15 @@
 <body>
 
 <script>
-    var formElement = document.getElementById("myFormElement");
+    var formData = new FormData();
+
+    formData.append("username", "Mauri");
+    formData.append("accountnum", 123456);
+    formData.append("afile", fileInputElement.files[0]);
+
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "localhost:8000");
-    xhr.send(new FormData(formElement));
+    xhr.open("PUT", "localhost:8000");
+    xhr.send(formData);
 
 </script>
 
